@@ -1,6 +1,4 @@
-#include<iostream>
-
-using namespace std;
+#include "cuenta.h"
 
 int main()
 {

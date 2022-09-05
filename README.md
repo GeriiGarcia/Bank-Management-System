@@ -16,3 +16,10 @@ Puedes pagar un recibo
 Si quieres operar sin tarjeta: puedes introducir 
 Dinero en una cuenta ( comprovar si la cuenta es real)
 
+
+-----------------------------------------------------------------------------------------
+Necesito:
+
+class cuenta
+class banco
+
