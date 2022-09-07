@@ -1,4 +1,5 @@
 #include<iostream>
+#include<vector>
 
 using namespace std;
 
@@ -15,7 +16,8 @@ public:
     int getNumTarjeta() {return numTarjeta;}
     string getNumCuenta() {return numCuenta;}
 
-    void crearCuenta(); //esto en banco.h
+    void ingresar(int ingresar) {saldo += ingresar;}
+    bool retirar(int retiro);
 
 
 private:
