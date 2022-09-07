@@ -10,7 +10,7 @@ public:
     void crearCuenta(); 
 
 private:
-    vector <cuenta> cu[10];
+    vector <cuenta> cu[0];
 
 };
 
