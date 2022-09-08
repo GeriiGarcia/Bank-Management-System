@@ -1,5 +1,18 @@
 #include "cuenta.h"
 
+
+cuenta::cuenta()
+{
+    numCuenta = "";
+    numTarjeta = 0;
+    saldo = 0;
+}
+
+cuenta::~cuenta()
+{
+    
+}
+
 bool cuenta::retirar(int retiro)
 {
     bool retirado = false;

@@ -33,7 +33,7 @@ el banco tendra un array de cuentas
 
 -comprovara que los numeros de cuenta sean validos
 -metodo banco.cuenta(numCuenta).consultarSaldo()
--buscara si hay un numero de cuenta, si no, ordenara a cuenta que se cree despues de comprovar si es valido
+-buscara si hay un numero de cuenta, si no, se crea despues de comprovar si es valido
 -creara un numero de tarjeta para la cuenta
 -metodo buscarCuenta(numCuenta) que devuelva un puntero a la cuenta
 

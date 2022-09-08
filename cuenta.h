@@ -26,9 +26,5 @@ private:
     int saldo;
 };
 
-cuenta::cuenta()
-{
-    numCuenta = "";
-    numTarjeta = 0;
-    saldo = 0;
-}
+
+
