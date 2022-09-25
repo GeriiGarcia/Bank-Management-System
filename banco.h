@@ -7,14 +7,17 @@ public:
     banco();
     ~banco();
 
-    void crearCuenta(); 
-    
+    void crearCuenta(bool tarjeta);
     bool comprovarNumeroCuenta(string num);
     void crearNumeroTarjeta(string num);
-    cuenta *buscarCuenta(string num);
+    Cuenta *buscarCuenta(string num);
+    void eliminarCuenta();
+
+    void iniciarTodo();
+    void guardarTodo();
 
 private:
-    vector <cuenta> cu[0];
+    vector <Cuenta> m_cuentas[0];
 
 };
 

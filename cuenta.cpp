@@ -1,19 +1,20 @@
 #include "cuenta.h"
 
 
-cuenta::cuenta()
+Cuenta::Cuenta()
 {
     numCuenta = "";
     numTarjeta = 0;
     saldo = 0;
+    numSecreto = 0000;
 }
 
-cuenta::~cuenta()
+Cuenta::~Cuenta()
 {
     
 }
 
-bool cuenta::retirar(int retiro)
+bool Cuenta::retirar(int retiro)
 {
     bool retirado = false;
     if(saldo - retiro >= 0)
@@ -25,4 +26,25 @@ bool cuenta::retirar(int retiro)
         cout << "No tienes saldo suficiente" << endl;
 
     return retirado;
+}
+
+string Cuenta::generarNumCuenta()
+{
+    string numero;
+    int n;
+
+    srand(time(NULL));
+
+    n=1000+rand()%(10000-1000);
+
+    numero = "ES" + n;
+
+    return numero;
+}
+
+int Cuenta::generarNumTarjeta()
+{
+    srand(time(NULL));
+
+    return 100+rand()%(1000-100);
 }
