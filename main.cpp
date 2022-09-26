@@ -1,8 +1,12 @@
-#include "cuenta.h"
+#include "banco.h"
 
 int main()
 {
-    cout << "hello";
+    banco MiBanco;
+
+    MiBanco.iniciarTodo();
+
+    
 
     return 0;
 }

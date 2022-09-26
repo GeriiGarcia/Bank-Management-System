@@ -30,6 +30,8 @@ public:
     string generarNumCuenta();
     int generarNumTarjeta();
 
+    friend ofstream& operator<< (ofstream& out, Cuenta const& cu) {out << cu.numCuenta << endl; out << cu.numTarjeta << endl; out << cu.saldo << endl; out << cu.numSecreto <<endl; }
+
 private:
     string numCuenta; //los numeros de cuenta tienen 4 digitos
     int numTarjeta; //los numeros de tarjeta tienen 3 digitos //si no tiene tarjeta sera 0

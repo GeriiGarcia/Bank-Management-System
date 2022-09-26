@@ -109,12 +109,30 @@ void banco::iniciarTodo()
         fitxer.close();
     }
     else
-        throw runtime_error("Fitxer no obert");
+        throw runtime_error("Fitxer no obert per iniciar");
 
 
 }
 
 void banco::guardarTodo()
 {
+    ofstream fitxer("datos.txt");
+    fitxer.open("datos.txt");
+    int i = 0;
+
+    if(fitxer.is_open())
+    {
+        fitxer.clear();
+
+        for (i = 0; i < m_cuentas->size(); ++i)
+        {
+            fitxer << m_cuentas->at(i);
+        }
+
+        fitxer.close();
+    }
+    else
+        throw runtime_error("Fitxer no obert per guardad");
+
 
 }
