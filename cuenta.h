@@ -10,6 +10,7 @@ class Cuenta
 {
 public:
     Cuenta();
+    Cuenta(string nC, int nT, float sal, int nS) {numCuenta=nC; numTarjeta=nT; saldo = sal; numSecreto = nS;}
     ~Cuenta();
 
     //setters

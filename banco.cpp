@@ -65,23 +65,11 @@ void banco::iniciarTodo()
 
     //variables del vector
     string nC;
-    int nT, i, aux;
+    int nT;
     float sal;
     int nS;   
 
-    ifstream i("datos.txt");
     fitxer.open("datos.txt");
-
-    if(fitxer.is_open())
-    {
-        while(!fitxer.eof())
-        {
-            fitxer >> aux;
-            i++;
-        }
-    }
-
-    m_cuentas->resize(i);
 
 
     if(fitxer.is_open())
@@ -90,29 +78,29 @@ void banco::iniciarTodo()
 
         if(primer == 0)
         {
-            //que escriba un uno y ya
+            ofstream uno("datos.txt");
+            uno.open("datos.txt");
+
+            if(uno.is_open())
+            {
+                uno << "1";
+            }
         }
         else
         {
             while (!fitxer.eof())
             {
                 contador = 0;
-                while (contador < 4)
-                {
-                    switch (contador)
-                    {
-                    case 0:
-                        fitxer >> nC;
+                
+                fitxer >> nC;
+                fitxer >> nT;
+                fitxer >> sal;
+                fitxer >> nS;
+                contador++;
+                
+                Cuenta aux(nC,nT,sal,nS);
 
-                        break;
-                    
-                    default:
-                        break;
-                    }
-
-
-                    contador++;
-                }
+                m_cuentas->push_back(aux);
                 
             }
             
