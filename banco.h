@@ -9,9 +9,8 @@ public:
 
     void crearCuenta(bool tarjeta);
     bool comprovarNumeroCuenta(string num);
-    void crearNumeroTarjeta(string num);
     Cuenta *buscarCuenta(string num);
-    void eliminarCuenta();
+    void eliminarCuenta(string num);
 
     void iniciarTodo();
     void guardarTodo();

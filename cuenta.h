@@ -2,6 +2,7 @@
 #include<vector>
 #include<stdlib.h>
 #include<time.h>
+#include <fstream>
 
 using namespace std;
 
@@ -30,9 +31,9 @@ public:
 
 private:
     string numCuenta; //los numeros de cuenta tienen 4 digitos
-    int numTarjeta; //los numeros de tarjeta tienen 3 digitos
+    int numTarjeta; //los numeros de tarjeta tienen 3 digitos //si no tiene tarjeta sera 0
     float saldo;
-    int numSecreto;
+    int numSecreto;   
 };
 
 
