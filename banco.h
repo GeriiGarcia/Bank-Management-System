@@ -4,8 +4,8 @@
 class banco
 {
 public:
-    banco();
-    ~banco();
+    banco() {};
+    ~banco() {};
 
     void crearCuenta(bool tarjeta);
     bool comprovarNumeroCuenta(string num);
@@ -20,10 +20,4 @@ private:
 
 };
 
-banco::banco(/* args */)
-{
-}
 
-banco::~banco()
-{
-}

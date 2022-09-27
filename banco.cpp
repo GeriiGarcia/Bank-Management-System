@@ -13,8 +13,16 @@ void banco::crearCuenta(bool tarjeta)
     if(tarjeta)
         nueva.setNumTarjeta(nueva.generarNumTarjeta());    
     
-    m_cuentas->resize(m_cuentas->size() + 1);
+    //m_cuentas->resize(m_cuentas->size() + 1);
     m_cuentas->push_back(nueva);
+
+    cout << "Cuenta creada con éxito." << endl << "Los datos de su cuenta son: " << endl;
+    cout << "Numero de cuenta: " << nueva.getNumCuenta() << "." << endl; 
+    cout << "Numero secreto: " << nueva.getNumSecreto() << "."<< endl; 
+    if(tarjeta)
+        cout << "Numero de tarjeta: " << nueva.generarNumTarjeta() << "." << endl; 
+    cout << "Saldo: " << nueva.getSaldo() << "."<< endl; 
+    
 }
 
 bool banco::comprovarNumeroCuenta(string num)
