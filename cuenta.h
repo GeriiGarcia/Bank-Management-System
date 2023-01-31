@@ -27,8 +27,8 @@ public:
     int getNumSecreto() {return numSecreto;}
 
     //metodos
-    void ingresar(int ingresar) {saldo += ingresar;}
-    bool retirar(int retiro);
+    void ingresar(float ingresar) {saldo += ingresar;}
+    bool retirar(float retiro);
     string generarNumCuenta();
     int generarNumTarjeta();
 

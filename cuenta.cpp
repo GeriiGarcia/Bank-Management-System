@@ -14,7 +14,7 @@ Cuenta::~Cuenta()
     
 }
 
-bool Cuenta::retirar(int retiro)
+bool Cuenta::retirar(float retiro)
 {
     bool retirado = false;
     if(saldo - retiro >= 0)
@@ -23,7 +23,7 @@ bool Cuenta::retirar(int retiro)
         saldo -= retiro;
     }
     else
-        cout << "No tienes saldo suficiente" << endl;
+        cout << "No tienes saldo suficiente." << endl;
 
     return retirado;
 }

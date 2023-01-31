@@ -15,6 +15,8 @@ public:
     void iniciarTodo();
     void guardarTodo();
 
+    void transferencia(string c1, string c2, float dinero);
+
 private:
     vector<Cuenta> m_cuentas;
 

@@ -4,9 +4,8 @@ void Menu()
 {
     cout << "¿Qué quieres hacer?" << endl;
     cout << "1. Entrar en mi cuenta." << endl;
-    cout << "2. Hacer una transferencia." << endl;
-    cout << "3. Crear una cuenta." << endl; 
-    cout << "4. Salir." << endl;  
+    cout << "2. Crear una cuenta." << endl; 
+    cout << "3. Salir." << endl;  
 }
 
 void MenuCuenta()
@@ -14,7 +13,10 @@ void MenuCuenta()
     cout << "¿Qué quieres hacer?" << endl;
     cout << "1. Consultar saldo." << endl;
     cout << "2. Consultar PIN Tarjeta." << endl;
-    cout << "3. Salir." << endl;  
+    cout << "3. Ingresar dinero." << endl;
+    cout << "4. Retirar dinero." << endl;
+    cout << "5. Transferencia bancaria." << endl;
+    cout << "6. Salir." << endl;  
 }
 
 int main()
@@ -30,13 +32,14 @@ int main()
     int opcion;
     cin >> opcion;
 
-    while(opcion <=0 && opcion >=5)
+    while(opcion <=0 || opcion >=4)
     {
         cout << "Opción no válida" << endl;
+        Menu();
         cin >> opcion;
     }
 
-    while (opcion != 4)
+    while (opcion != 3)
     {
         string cuenta;
 
@@ -61,8 +64,11 @@ int main()
             //Que tenga 3 intentos para entrar
             if(cuenta != "x" && MiBanco.buscarCuenta(cuenta)->entrarCuenta())
             {
+                float dinero = -1.0;
                 int opcionCuenta = 0;
-                while(opcionCuenta != 3)
+                string cuentaBeneficiaria;
+
+                while(opcionCuenta != 6)
                 {
                     MenuCuenta();
                     cin >> opcionCuenta;
@@ -74,9 +80,53 @@ int main()
                     case 2:
                         cout << "Tu numero de tarjeta es: " << MiBanco.buscarCuenta(cuenta)->getNumTarjeta() << "." << endl;
                         break;
-                    case 3: 
+                    case 6: 
                         cout << "Hasta Luego." << endl;
                         break;
+
+                    case 3:
+                        
+                        cout << "Escribe cuanto dinero quieres ingresar: ";
+                        cin >> dinero;
+                        while(dinero < 0)
+                        {
+                            cout << "No puedes ingresar dinero negativo, intentelo de nuevo." << endl;
+                            cout << "Escribe cuanto dinero quieres ingresar: "; 
+                            cin >> dinero;
+                        }
+
+                        MiBanco.buscarCuenta(cuenta)->ingresar(dinero);
+                        cout << "Ingresado con exito. Ahora su saldo es de: " << MiBanco.buscarCuenta(cuenta)->getSaldo() << "€." << endl;
+                        break;
+
+                    case 4: //retirar
+                        
+                        cout << "Escribe cuanto dinero quieres retirar: ";
+                        cin >> dinero;
+                        while(dinero < 0)
+                        {
+                            cout << "No puedes retirar dinero negativo, intentelo de nuevo." << endl;
+                            cout << "Escribe cuanto dinero quieres retirar: "; 
+                            cin >> dinero;
+                        }
+
+                        if(MiBanco.buscarCuenta(cuenta)->retirar(dinero))
+                        {
+                            cout << "Retirado con exito." << endl;
+                        }
+         
+                        break;
+
+                    case 5:
+                        cout << "Introduce el numero de cuenta al que quieres hacer la transferencia: ";
+                        cin>>cuentaBeneficiaria;
+                        cout << "Introduce la cantidad de dinero que quieres transferir: ";
+                        cin >> dinero;
+
+
+                        MiBanco.transferencia(cuenta,cuentaBeneficiaria, dinero);
+                        break;
+                    
                     default:
                         cout << "Opcion no valida." << endl;
                         break;
@@ -86,10 +136,10 @@ int main()
             }
             break;
 
-        case 2: //entrar en la cuenta y pedir a q cuenta hacer la transeferencia, si esta en mi banco sumar y restar a las 2, si no esta en mi banco restar a la que hace la transferencia
-            break;
+        //entrar en la cuenta y pedir a q cuenta hacer la transeferencia, si esta en mi banco sumar y restar a las 2, si no esta en mi banco restar a la que hace la transferencia
+       
 
-        case 3:
+        case 2:
             cout << "Perfecto, vamos a crear la cuenta." << endl;
             cout << "¿Quiere tarjeta de credito asociada a la cuenta?" << endl << "Si/No" << endl;
             bool tarjeta;
@@ -112,7 +162,7 @@ int main()
 
         cin >> opcion;
 
-        while(opcion <=0 && opcion >=5)
+        while(opcion <=0 || opcion >=5)
         {
             cout << "Opción no válida" << endl;
             cin >> opcion;

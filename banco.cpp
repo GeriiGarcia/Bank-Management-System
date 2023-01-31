@@ -114,3 +114,32 @@ void banco::guardarTodo()
 
 
 }
+
+
+void banco::transferencia(string c1, string c2, float dinero)
+{
+    //tengo que ver si el que da tiene suficiente dinero
+    //Tengo que ver si el que recibe esta en el banco
+    //Si esta en el banco restar y sumar a quien convenga, si no, solo restar a quien da
+
+    Cuenta *C1 = buscarCuenta(c1);
+    Cuenta *C2 = buscarCuenta(c2);
+
+    if(C1->getSaldo() >= dinero)
+    {
+        if(C2 == nullptr)
+        {
+            C1->retirar(dinero);
+        }
+        else
+        {
+            C1->retirar(dinero);
+            C2->ingresar(dinero);
+        }
+        cout << "Transferencia relaizada con exito." << endl;
+    }
+    else
+    {
+        cout << "Lo siento. No tienes saldo suficiente." << endl;
+    }
+}
