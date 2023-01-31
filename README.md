@@ -15,8 +15,8 @@ Cada cuenta tiene su numero de cuenta, su numero secreto para entrar a la cuenta
 Descargar el proyecto utilizando:
 
 ```
-
 git clone https://github.com/GeriiGarcia/Bank-Management-System.git
+
 cd Bank-Management-System
 ```
 
