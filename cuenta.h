@@ -1,8 +1,10 @@
+#pragma once
 #include<iostream>
 #include<vector>
 #include<stdlib.h>
 #include<time.h>
 #include <fstream>
+#include<string>
 
 using namespace std;
 

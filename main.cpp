@@ -48,6 +48,7 @@ int main()
                     break;
             }
 
+            //mostrar cuenta
 
             break;
 
@@ -75,7 +76,6 @@ int main()
 
         Menu();
 
-        int opcion;
         cin >> opcion;
 
         while(opcion <=0 && opcion >=5)
@@ -84,6 +84,8 @@ int main()
             cin >> opcion;
         }
     }
+
+    MiBanco.guardarTodo();
 
     return 0;
 }

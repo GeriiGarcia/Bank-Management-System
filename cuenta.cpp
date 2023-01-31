@@ -30,14 +30,16 @@ bool Cuenta::retirar(int retiro)
 
 string Cuenta::generarNumCuenta()
 {
-    string numero;
+    string numero = "ES";
     int n;
+    string aux;
 
     srand(time(NULL));
 
     n=1000+rand()%(10000-1000);
 
-    numero = "ES" + n;
+    aux = to_string(n);
+    numero += aux;
 
     return numero;
 }

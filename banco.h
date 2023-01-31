@@ -1,11 +1,11 @@
+#pragma once
 #include "cuenta.h"
-
 
 class banco
 {
 public:
-    banco() {};
-    ~banco() {};
+    banco() {m_cuentas.resize(0);}
+    ~banco() {}
 
     void crearCuenta(bool tarjeta);
     bool comprovarNumeroCuenta(string num);
@@ -16,7 +16,7 @@ public:
     void guardarTodo();
 
 private:
-    vector <Cuenta> m_cuentas[0];
+    vector<Cuenta> m_cuentas;
 
 };
 

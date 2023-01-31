@@ -14,7 +14,7 @@ void banco::crearCuenta(bool tarjeta)
         nueva.setNumTarjeta(nueva.generarNumTarjeta());    
     
     //m_cuentas->resize(m_cuentas->size() + 1);
-    m_cuentas->push_back(nueva);
+    m_cuentas.push_back(nueva);
 
     cout << "Cuenta creada con éxito." << endl << "Los datos de su cuenta son: " << endl;
     cout << "Numero de cuenta: " << nueva.getNumCuenta() << "." << endl; 
@@ -29,9 +29,9 @@ bool banco::comprovarNumeroCuenta(string num)
 {
     bool trobat = false;
 
-    for (int i = 0; i < m_cuentas->size(); i++)
+    for (int i = 0; i < m_cuentas.size(); i++)
     {
-        if(m_cuentas->at(i).getNumCuenta() == num)
+        if(m_cuentas.at(i).getNumCuenta() == num)
             trobat = true;
     }
 
@@ -42,10 +42,10 @@ Cuenta* banco::buscarCuenta(string num)
 {
     Cuenta *pt = nullptr;
 
-    for (int i = 0; i < m_cuentas->size(); ++i)
+    for (int i = 0; i < m_cuentas.size(); ++i)
     {
-        if(m_cuentas->at(i).getNumCuenta() == num)
-            return &m_cuentas->at(i);
+        if(m_cuentas.at(i).getNumCuenta() == num)
+            return &m_cuentas.at(i);
             
     }
 
@@ -54,70 +54,40 @@ Cuenta* banco::buscarCuenta(string num)
 
 void banco::eliminarCuenta(string num)
 {
-    vector<Cuenta>::iterator it = m_cuentas->begin();
+    vector<Cuenta>::iterator it = m_cuentas.begin();
 
-    for (num = num; it < m_cuentas->end(); ++it)
+    for (num = num; it < m_cuentas.end(); ++it)
     {
         if(it->getNumCuenta() == num)
-            m_cuentas->erase(it);
+            m_cuentas.erase(it);
             
     }
 }
 
 void banco::iniciarTodo()
 {
-    ifstream fitxer("datos.txt");
-    fitxer.open("datos.txt");
 
-    int primer, contador = 0;
+    ifstream file("datos.txt");
+	string  str;
+    vector<string> linias;
+    
+    while(getline(file, str))
+        linias.push_back(str);
 
-    //variables del vector
-    string nC;
-    int nT;
-    float sal;
-    int nS;   
-
-    fitxer.open("datos.txt");
-
-
-    if(fitxer.is_open())
+    if(!linias.empty())
     {
-        fitxer >> primer;
-
-        if(primer == 0)
+        for(int i = 0; i < linias.size()-1; i += 4)
         {
-            ofstream uno("datos.txt");
-            uno.open("datos.txt");
+            //variables del vector
+            string nC = linias[i];
+            int nT = stoi(linias[i+1]);
+            float sal = stof(linias[i+2]);
+            int nS = stoi(linias[i+3]);
 
-            if(uno.is_open())
-            {
-                uno << "1";
-            }
+            Cuenta aux(nC,nT,sal,nS);
+            m_cuentas.push_back(aux);
         }
-        else
-        {
-            while (!fitxer.eof())
-            {
-                contador = 0;
-                
-                fitxer >> nC;
-                fitxer >> nT;
-                fitxer >> sal;
-                fitxer >> nS;
-                contador++;
-                
-                Cuenta aux(nC,nT,sal,nS);
-
-                m_cuentas->push_back(aux);
-                
-            }
-            
-        }
-
-        fitxer.close();
     }
-    else
-        throw runtime_error("Fitxer no obert per iniciar");
 
 
 }
@@ -132,9 +102,9 @@ void banco::guardarTodo()
     {
         fitxer.clear();
 
-        for (i = 0; i < m_cuentas->size(); ++i)
+        for (i = 0; i < m_cuentas.size(); ++i)
         {
-            fitxer << m_cuentas->at(i);
+            fitxer << m_cuentas.at(i);
         }
 
         fitxer.close();
