@@ -30,6 +30,7 @@ int main()
     int opcion;
     cin >> opcion;
 
+
     while(opcion <=0 && opcion >=5)
     {
         cout << "Opción no válida" << endl;
