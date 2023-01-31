@@ -5,8 +5,9 @@ Cuenta::Cuenta()
 {
     numCuenta = "";
     numTarjeta = 0;
-    saldo = 0;
+    saldo = 0.0;
     numSecreto = 0000;
+    movimientos.resize(1, 0.0);
 }
 
 Cuenta::~Cuenta()
@@ -21,6 +22,7 @@ bool Cuenta::retirar(float retiro)
     {
         retirado = true;
         saldo -= retiro;
+        movimientos.push_back(-retiro);
     }
     else
         cout << "No tienes saldo suficiente." << endl;
@@ -77,4 +79,22 @@ bool Cuenta::entrarCuenta()
     return false;
     
 
+}
+
+void Cuenta::mostrarMovimientos() const
+{
+    cout << "Movimientos: ";
+
+    for(auto a : movimientos)
+    {
+        if(a != 0.0)
+        {
+            if(a > 0)
+                cout << "+" << a << " ";
+            else
+                cout << a << " ";
+        }
+            
+    }
+    cout << endl;
 }

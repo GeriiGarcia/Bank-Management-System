@@ -16,7 +16,8 @@ void MenuCuenta()
     cout << "3. Ingresar dinero." << endl;
     cout << "4. Retirar dinero." << endl;
     cout << "5. Transferencia bancaria." << endl;
-    cout << "6. Salir." << endl;  
+    cout << "6. Mostrar movimientos." << endl;
+    cout << "7. Salir." << endl;  
 }
 
 int main()
@@ -68,7 +69,7 @@ int main()
                 int opcionCuenta = 0;
                 string cuentaBeneficiaria;
 
-                while(opcionCuenta != 6)
+                while(opcionCuenta != 7)
                 {
                     MenuCuenta();
                     cin >> opcionCuenta;
@@ -80,7 +81,7 @@ int main()
                     case 2:
                         cout << "Tu numero de tarjeta es: " << MiBanco.buscarCuenta(cuenta)->getNumTarjeta() << "." << endl;
                         break;
-                    case 6: 
+                    case 7: 
                         cout << "Hasta Luego." << endl;
                         break;
 
@@ -125,6 +126,10 @@ int main()
 
 
                         MiBanco.transferencia(cuenta,cuentaBeneficiaria, dinero);
+                        break;
+
+                    case 6:
+                        MiBanco.buscarCuenta(cuenta)->mostrarMovimientos();
                         break;
                     
                     default:
