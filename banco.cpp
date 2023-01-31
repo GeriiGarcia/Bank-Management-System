@@ -1,5 +1,33 @@
 #include "banco.h"
 
+vector<float> strTOvint(const string s)
+{
+    vector<float> nums;
+    vector<string> numsS;
+    
+    char buffer[50];
+    strcpy(buffer,s.c_str());
+    
+    char *ptr;
+    ptr = strtok(buffer, " ");
+    
+    while (ptr != NULL)  
+    {  
+        //cout << ptr  << endl; 
+        numsS.push_back(ptr);
+        ptr = strtok(NULL, " ");  
+    }
+    
+    //pasamos de numsS a nums
+    
+    for(int i = 0; i < numsS.size(); i++)
+    {
+        nums.push_back(stof(numsS[i]));
+    }
+    
+    return nums;
+}
+
 void banco::crearCuenta(bool tarjeta)
 {
     Cuenta nueva;
@@ -76,15 +104,16 @@ void banco::iniciarTodo()
 
     if(!linias.empty())
     {
-        for(int i = 0; i < linias.size()-1; i += 4)
+        for(int i = 0; i < linias.size()-1; i += 5)
         {
             //variables del vector
             string nC = linias[i];
             int nT = stoi(linias[i+1]);
             float sal = stof(linias[i+2]);
             int nS = stoi(linias[i+3]);
+            vector<float> m = strTOvint(linias[i+4]);
 
-            Cuenta aux(nC,nT,sal,nS);
+            Cuenta aux(nC,nT,sal,nS,m);
             m_cuentas.push_back(aux);
         }
     }
