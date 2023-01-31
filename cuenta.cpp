@@ -50,3 +50,31 @@ int Cuenta::generarNumTarjeta()
 
     return 100+rand()%(1000-100);
 }
+
+bool Cuenta::entrarCuenta()
+{
+    cout << "Introduce tu numero secreto de tu cuenta" << endl;
+    int pin, vegades = 0;
+    bool correcte = false;
+
+    while(!correcte && vegades < 3)
+    {
+        cin >> pin;
+
+        if(pin == this->getNumSecreto())
+        {
+            correcte = true;
+            return true;
+        }
+        else if(3-vegades != 1)
+        {
+            cout << "Te quedan: " << 3-vegades << " intentos." << endl;
+        }
+        vegades++;
+        
+    }
+    cout << "Lo siento, no le quedan intentos." << endl;
+    return false;
+    
+
+}

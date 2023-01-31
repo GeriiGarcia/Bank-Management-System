@@ -9,6 +9,14 @@ void Menu()
     cout << "4. Salir." << endl;  
 }
 
+void MenuCuenta()
+{
+    cout << "¿Qué quieres hacer?" << endl;
+    cout << "1. Consultar saldo." << endl;
+    cout << "2. Consultar PIN Tarjeta." << endl;
+    cout << "3. Salir." << endl;  
+}
+
 int main()
 {
     banco MiBanco;
@@ -47,12 +55,38 @@ int main()
                 if(cuenta == "x")
                     break;
             }
-
-            //mostrar cuenta
-
+            
+            //mostrar cuenta, otro menu para consultar saldo, consultar pin
+            //si el numero secreto es correcto 
+            //Que tenga 3 intentos para entrar
+            if(cuenta != "x" && MiBanco.buscarCuenta(cuenta)->entrarCuenta())
+            {
+                int opcionCuenta = 0;
+                while(opcionCuenta != 3)
+                {
+                    MenuCuenta();
+                    cin >> opcionCuenta;
+                    switch (opcionCuenta)
+                    {
+                    case 1:
+                        cout << "Tu saldo es: " << MiBanco.buscarCuenta(cuenta)->getSaldo() << "€." << endl;
+                        break;
+                    case 2:
+                        cout << "Tu numero de tarjeta es: " << MiBanco.buscarCuenta(cuenta)->getNumTarjeta() << "." << endl;
+                        break;
+                    case 3: 
+                        cout << "Hasta Luego." << endl;
+                        break;
+                    default:
+                        cout << "Opcion no valida." << endl;
+                        break;
+                    }
+                }
+                    
+            }
             break;
 
-        case 2:
+        case 2: //entrar en la cuenta y pedir a q cuenta hacer la transeferencia, si esta en mi banco sumar y restar a las 2, si no esta en mi banco restar a la que hace la transferencia
             break;
 
         case 3:
