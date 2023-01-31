@@ -23,4 +23,3 @@ cd Bank-Management-System
 Compilar y ejecutar el proyecto desde la terminal utilizando:
 
 `clear && g++ -o main main.cpp banco.cpp cuenta.cpp && ./main`
-
